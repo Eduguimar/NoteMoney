@@ -49,9 +49,6 @@ class NotebooksController extends Controller {
 
         Auth::user()->notebooks()->save($notebook);
 
-
-        Flash::error('');
-
         return Redirect::route('notebooks.index')->with('message', 'Caderno criado!');
 	}
 
