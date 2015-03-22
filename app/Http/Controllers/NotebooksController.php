@@ -8,15 +8,15 @@ use Redirect;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateNotebookRequest;
 
-use Illuminate\Http\Request;
+use Request;
 
 class NotebooksController extends Controller {
 
     //Construtor para aplicar o método de autenticação no controller
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('auth');
-    }
+    }*/
 
 	/**
 	 * Display a listing of the resource.
@@ -25,7 +25,16 @@ class NotebooksController extends Controller {
 	 */
 	public function index()
 	{
-		return view('notebooks.home');
+        if(Auth::user())
+        {
+            $notebooks = Auth::user()->notebooks;
+            return view('notebooks.home', compact('notebooks'));
+
+        }
+        else
+        {
+            return view('auth.login');
+        }
 	}
 
 	/**
@@ -41,6 +50,7 @@ class NotebooksController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
+     * @param CreateNotebookRequest $request
 	 * @return Response
 	 */
 	public function store(CreateNotebookRequest $request)
@@ -55,21 +65,21 @@ class NotebooksController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  Notebook  $notebook
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Notebook $notebook)
 	{
-		//
+		return view('notebooks.show', compact('notebook'));
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  Notebook  $notebook
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Notebook $notebook)
 	{
 		//
 	}
@@ -77,10 +87,10 @@ class NotebooksController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  Notebook  $notebook
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Notebook $notebook)
 	{
 		//
 	}
@@ -88,10 +98,10 @@ class NotebooksController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  Notebook  $notebook
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Notebook $notebook)
 	{
 		//
 	}

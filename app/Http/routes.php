@@ -11,11 +11,13 @@
 |
 */
 
+/*Autenticação*/
+
 Route::get('/', 'NotebooksController@index');
 Route::resource('notebooks', 'NotebooksController');
+Route::resource('notebooks.notes', 'NotesController');
 
-/*Autenticação*/
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
 ]);

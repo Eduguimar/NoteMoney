@@ -5,7 +5,7 @@
                     {!! Form::button('&times;', ['class' => 'close', 'data-dismiss' => 'modal', 'aria-hidden' => 'true']) !!}
                     <h4 class="modal-title" id="myModalLabel">Novo Caderno</h4>
                 </div>
-                {!! Form::open(['action' => 'NotebooksController@store']) !!}
+                {!! Form::model(new App\Notebook, ['route' => ['notebooks.store']]) !!}
                     <div class="modal-body">
                         <div class="form-group">
                             {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Título']) !!}
