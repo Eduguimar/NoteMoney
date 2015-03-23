@@ -7,6 +7,7 @@
 	<title>NoteMaster</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -14,7 +15,7 @@
 <body>
     @include('partials.nav')
 
-    <div class="container">
+    <div id="main" class="container">
         @if (Session::has('message'))
             <div class="alert alert-info">
                 <p>{{ Session::get('message') }}</p>

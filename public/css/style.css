@@ -1,0 +1,27 @@
+#main {
+    padding-top:50px;
+}
+
+#notebook {
+    display: inline-block;
+    white-space: nowrap;
+    width: 358px;
+    float: left;
+    margin: 10px 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#notebook-description {
+    max-width: 358px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#sidebar {
+    font-size: 18px;
+}
+
+#sidebar>li {
+    margin-bottom: 20px;
+}

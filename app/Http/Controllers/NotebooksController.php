@@ -12,11 +12,12 @@ use Request;
 
 class NotebooksController extends Controller {
 
+
     //Construtor para aplicar o método de autenticação no controller
-    /*public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -28,7 +29,8 @@ class NotebooksController extends Controller {
         if(Auth::user())
         {
             $notebooks = Auth::user()->notebooks;
-            return view('notebooks.home', compact('notebooks'));
+
+            return view('notebooks.home', compact('notebooks', 'total'));
 
         }
         else
