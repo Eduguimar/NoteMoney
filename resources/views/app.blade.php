@@ -12,8 +12,16 @@
 	<!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
-<body>
+
+@if(Auth::guest())
+    <body class="notemaster-guest">
+@else
+    <body>
+@endif
+
+@if(Auth::user())
     @include('partials.nav')
+@endif
 
     <div id="main" class="container">
         @if (Session::has('message'))

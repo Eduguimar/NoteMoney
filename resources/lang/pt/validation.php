@@ -103,7 +103,8 @@ return array(
 
     'attributes' => array(
         'title' => 'Título',
-        'description' => 'Descrição'
+        'description' => 'Descrição',
+        'password' => 'senha'
     ),
 
 );
