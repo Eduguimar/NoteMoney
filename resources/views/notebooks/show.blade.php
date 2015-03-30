@@ -2,6 +2,7 @@
 
 @section('content')
     <h1>{{ $notebook->title }}</h1>
+    <hr/>
     <h2>{{ $notebook->description }}</h2>
 
     @if ( !$notebook->notes->count() )

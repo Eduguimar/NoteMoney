@@ -59,6 +59,10 @@ class NotebooksController extends Controller {
 	{
 		$notebook = new Notebook($request->all());
 
+        if(is_null($notebook['description']) || (trim($notebook['description']) == "")) {
+            $notebook['description'] = $notebook['title'];
+        }
+
         Auth::user()->notebooks()->save($notebook);
 
         return Redirect::route('notebooks.index')->with('message', 'Caderno criado!');

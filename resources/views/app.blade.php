@@ -19,25 +19,24 @@
     <body>
 @endif
 
-@if(Auth::user())
-    @include('partials.nav')
-@endif
+    @if(Auth::user())
+        @include('partials.nav')
+    @endif
 
-    <div id="main" class="container">
-        @if (Session::has('message'))
-            <div class="alert alert-info">
-                <p>{{ Session::get('message') }}</p>
-            </div>
-        @endif
-        @if ($errors->any())
-            <div class='alert alert-danger'>
-                @foreach ( $errors->all() as $error )
-                    <p>{{ $error }}</p>
-                @endforeach
-            </div>
-        @endif
-	    @yield('content')
-    </div>
+    @if (Session::has('message'))
+        <div class="alert alert-info">
+            <p>{{ Session::get('message') }}</p>
+        </div>
+    @endif
+    @if ($errors->any())
+        <div class='alert alert-danger'>
+            @foreach ( $errors->all() as $error )
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
+
+    @yield('content')
 
     @include('notebooks.create')
 

@@ -1,15 +1,51 @@
-#main {
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: #fafafa;
+}
+
+.main {
     padding-top:50px;
 }
 
 #notebook {
     display: inline-block;
     white-space: nowrap;
-    width: 358px;
+    width: 400px;
     float: left;
     margin: 10px 10px;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+#notebook:hover,
+#notebook:focus {
+    border: 1px solid #c9c9c9;
+    transition: 0.5s;
+}
+
+.panel-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.panel-title a {
+    text-decoration: none;
+}
+
+.heading:hover,
+.heading:focus {
+    background-color: #d3d3d3;
+    transition: 0.4s;
+}
+
+.panel-title a:hover,
+.panel-title a:focus {
+    color: #111111;
 }
 
 /*** TELA INICIAL DE LOGIN - PANEL COM DOIS TABS ***/
@@ -81,4 +117,12 @@
 
 #sidebar>li {
     margin-bottom: 20px;
+}
+
+#sidebar li {
+    transition: background-color 0.3s;
+}
+
+#sidebar li a:hover {
+    background-color: #dadada;
 }
