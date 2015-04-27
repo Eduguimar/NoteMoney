@@ -10,22 +10,76 @@
 
             <div class="col-sm-9">
 
-                <h2>Cadernos</h2>
+                <div class="row">
 
-                <hr>
+                    <div class="jumbotron">
 
-                @foreach($notebooks as $notebook)
-                    <div id="notebook" class="panel panel-default">
-                        <div class="panel-heading heading">
-                            <h3 class="panel-title">
-                                <a href="{{ route('notebooks.show', $notebook) }}">{!! $notebook->title !!}</a>
-                            </h3>
-                        </div>
-                        <div id="notebook-description" class="panel-body">
-                            {!! $notebook->description !!}
-                        </div>
+                        @if( !$notebooks->count() || !isset($last_notebook))
+                            <h2>Você ainda não possui cadernos!</h2>
+                        @else
+
+                            <h1>{{ $last_notebook->title }}</h1>
+
+                            <div class="row">
+
+                                {!! Form::open(['route' => ['notebooks.destroy', $last_notebook], 'method' => 'DELETE']) !!}
+
+                                {!! Form::submit('Excluir Caderno', ['class' => 'btn btn-danger', 'style' => 'float: right']) !!}
+
+                                <a href="{{ route('notebooks.edit', $last_notebook) }}" style="float: right; margin-right: 20px;">{!! Form::button('Editar Caderno', ['class' => 'btn btn-warning']) !!}</a>
+
+                                {!! Form::close() !!}
+
+                            </div>
+
+                            <hr/>
+                            <p>{{ $last_notebook->description }}</p>
+
+                            {!! Form::open() !!}
+
+                                <a href="{{ route('notebooks.notes.create', $last_notebook) }}">{!! Form::button('Criar nota', ['class' => 'btn btn-primary btn-lg']) !!}</a>
+
+                            {!! Form::close() !!}
+
+                        @endif
+
                     </div>
-                @endforeach
+                </div>
+
+                <div class="row">
+
+                    @if( !$notebooks->count() || !isset($last_notebook))
+                        <h3>É preciso criar um caderno para criar as notas!</h3>
+
+                        <hr/>
+
+                        {!! Form::open() !!}
+
+                        <a href="#">{!! Form::button('Criar primeiro caderno!', ['class' => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', 'data-target' => '#createNotebook']) !!}</a>
+
+                        {!! Form::close() !!}
+                    @else
+
+                        @if ( !$last_notebook->notes->count() )
+                            <h3>Você ainda não possui notas para esse caderno!</h3>
+                        @else
+                            @foreach($last_notebook->notes as $note)
+                                <div id="note" class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            <a href="{{ route('notebooks.notes.show', [$last_notebook, $note]) }}">{!! $note->title !!}</a>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        {!! $note->description !!}
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+
+                    @endif
+
+                </div>
 
             </div>
 

@@ -2,20 +2,55 @@
 
 @section('content')
 
-    @if ( !$notebook->notes->count() )
-        Seu caderno ainda não possui notas!
-    @else
-        @foreach($notebook->notes as $note)
-            <h1>{!! $note->title !!}</h1>
-            <h2>{!! $note->description !!}</h2>
-            <hr>
-        @endforeach
-    @endif
+    <div class="main container-fluid">
 
-    {!! Form::open() !!}
+        <div class="row">
 
-    <a href="notes/create">{!! Form::button('Criar nota', ['class' => 'btn btn-primary']) !!}</a>
+            @include('/partials/sidebar')
 
-    {!! Form::close() !!}
+            <div class="col-sm-9">
 
+                <div class="row">
+
+                    <div class="jumbotron">
+
+                        <h1>{{ $notebook->title }}</h1>
+                        <hr/>
+                        <p>{{ $notebook->description }}</p>
+
+                        {!! Form::open() !!}
+
+                        <a href="{{ route('notebooks.notes.create', $notebook) }}">{!! Form::button('Criar nota', ['class' => 'btn btn-primary btn-lg']) !!}</a>
+
+                        {!! Form::close() !!}
+
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    @if ( !$notebook->notes->count() )
+                        Seu caderno ainda não possui notas!
+                    @else
+                        @foreach($notebook->notes as $note)
+                            <div id="note" class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a href="{{ route('notebooks.notes.show', $note) }}">{!! $note->title !!}</a>
+                                    </h3>
+                                </div>
+                                <div id="note-description" class="panel-body">
+                                    {!! $note->description !!}
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 @endsection

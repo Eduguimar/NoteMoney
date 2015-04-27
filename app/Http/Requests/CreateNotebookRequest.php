@@ -22,7 +22,8 @@ class CreateNotebookRequest extends Request {
 	public function rules()
 	{
 		return [
-			'title' => 'required',
+			'title' => 'required|max:150',
+            'description' => 'max:180'
 		];
 	}
 

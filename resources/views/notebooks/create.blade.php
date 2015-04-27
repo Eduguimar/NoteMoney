@@ -1,4 +1,4 @@
-    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal fade" id="createNotebook" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -12,7 +12,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Descrição']) !!}
+                            {!! Form::textarea('description', null, ['class' => 'form-control counter', 'placeholder' => 'Descrição']) !!}
                         </div>
                     </div>
                     <div class="modal-footer">

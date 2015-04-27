@@ -8,9 +8,9 @@
 
             <div class="col-sm-10 col-sm-offset-1">
 
-                <h1 class="page-heading">Novo Lançamento</h1>
+                <h1 class="page-heading">Editar Lançamento</h1>
 
-                {!! Form::model(new App\Transaction, ['route' => ['transactions.store']]) !!}
+                {!! Form::model($transaction, ['method' => 'PUT', 'route' => ['transactions.update', $transaction]]) !!}
 
                 <div class="form-group">
                     {!! Form::label('title', 'Título: ') !!}
@@ -37,7 +37,7 @@
 
                 <div class="form-inline">
                     <div class="form-group">
-                        <a href="{{ URL::previous() }}">
+                        <a href="{{ route('transactions.show', $transaction) }}">
                             {!! Form::button('Cancelar', ['class' => 'btn btn-default']) !!}
                         </a>
                     </div>

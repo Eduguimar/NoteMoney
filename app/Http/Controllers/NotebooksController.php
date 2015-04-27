@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Notebook;
 use Auth;
+use Input;
 use Laracasts\Flash\Flash;
 use Redirect;
 use App\Http\Controllers\Controller;
@@ -11,7 +12,6 @@ use App\Http\Requests\CreateNotebookRequest;
 use Request;
 
 class NotebooksController extends Controller {
-
 
     //Construtor para aplicar o método de autenticação no controller
     public function __construct()
@@ -30,7 +30,15 @@ class NotebooksController extends Controller {
         {
             $notebooks = Auth::user()->notebooks;
 
-            return view('notebooks.home', compact('notebooks', 'total'));
+            if($notebooks->count()) {
+                $notebook_array = end($notebooks);
+
+                $last_notebook = end($notebook_array);
+
+                return view('notebooks.home', compact('notebooks', 'last_notebook'));
+            } else {
+                return view('notebooks.home', compact('notebooks'));
+            }
 
         }
         else
@@ -59,10 +67,6 @@ class NotebooksController extends Controller {
 	{
 		$notebook = new Notebook($request->all());
 
-        if(is_null($notebook['description']) || (trim($notebook['description']) == "")) {
-            $notebook['description'] = $notebook['title'];
-        }
-
         Auth::user()->notebooks()->save($notebook);
 
         return Redirect::route('notebooks.index')->with('message', 'Caderno criado!');
@@ -76,7 +80,9 @@ class NotebooksController extends Controller {
 	 */
 	public function show(Notebook $notebook)
 	{
-		return view('notebooks.show', compact('notebook'));
+        $notebooks = Auth::user()->notebooks;
+
+		return view('notebooks.show', compact('notebook', 'notebooks'));
 	}
 
 	/**
@@ -87,18 +93,23 @@ class NotebooksController extends Controller {
 	 */
 	public function edit(Notebook $notebook)
 	{
-		//
+        $notebooks = Auth::user()->notebooks;
+
+        return view('notebooks.edit', compact('notebook', 'notebooks'));
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  Notebook  $notebook
+     * @param  CreateNotebookRequest $request
 	 * @return Response
 	 */
-	public function update(Notebook $notebook)
+	public function update(Notebook $notebook, CreateNotebookRequest $request)
 	{
-		//
+        $notebook->update($request->all());
+
+        return Redirect::route('notebooks.show', $notebook)->with('message', 'Caderno Atualizado!');
 	}
 
 	/**
@@ -109,7 +120,9 @@ class NotebooksController extends Controller {
 	 */
 	public function destroy(Notebook $notebook)
 	{
-		//
+        $notebook->delete();
+
+        return Redirect::route('notebooks.index')->with('message', 'Caderno Excluído!');
 	}
 
 }

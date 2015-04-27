@@ -1,16 +1,10 @@
 html {
     height: 100%;
 }
-
 body {
     height: 100%;
     background-color: #fafafa;
 }
-
-.main {
-    padding-top:50px;
-}
-
 #notebook {
     display: inline-block;
     white-space: nowrap;
@@ -20,32 +14,40 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
 }
-
-#notebook:hover,
-#notebook:focus {
+#note {
+    display: inline-block;
+    white-space: nowrap;
+    float: left;
+    width: 610px;
+    margin: 10px 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#note:hover,
+#note:focus {
     border: 1px solid #c9c9c9;
     transition: 0.5s;
 }
-
 .panel-title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 .panel-title a {
     text-decoration: none;
 }
-
 .heading:hover,
 .heading:focus {
     background-color: #d3d3d3;
     transition: 0.4s;
 }
-
 .panel-title a:hover,
 .panel-title a:focus {
     color: #111111;
+}
+.alert {
+    width: 90%;
+    margin: 10px auto;
 }
 
 /*** TELA INICIAL DE LOGIN - PANEL COM DOIS TABS ***/
@@ -105,24 +107,57 @@ body {
 }
 /*** TÉRMINO DA TELA DE LOGIN - PANEL COM DOIS TABS ***/
 
-#notebook-description {
+#note-description {
     max-width: 358px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 #sidebar {
+    font-size: 14px;
+}
+#transactions-sidebar {
     font-size: 18px;
 }
-
-#sidebar>li {
-    margin-bottom: 20px;
+#sidebar>li>a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-
-#sidebar li {
-    transition: background-color 0.3s;
-}
-
 #sidebar li a:hover {
     background-color: #dadada;
 }
+/*** INÍCIO TABELA DE TRANSAÇÕES ***/
+
+#transaction-table th {
+    width: 75%;
+}
+#transaction-table th:first-child {
+    width: 10%;
+}
+#transaction-table tr td a {
+    text-decoration: none;
+
+}
+.receita {
+    color: #3C763D;
+}
+.despesa {
+    color: #A94442;
+}
+.fa-trash-o {
+    color: #444;
+}
+/*** TÉRMINO TABELA DE TRANSAÇÕES ***/
+
+/*** AJUSTE JUMBOTRON ***/
+.breadcrumb {
+    background-color: #eee;
+}
+
+.jumbotron h1 {
+    font-size: 59px;
+}
+.jumbotron p {
+    font-size: 19px;
+}
+/*** TÉRMINO AJUSTE JUMBOTRON ***/

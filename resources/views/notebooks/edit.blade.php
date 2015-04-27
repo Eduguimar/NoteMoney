@@ -10,11 +10,11 @@
 
             <div class="col-sm-9">
 
-                <h2>Nova Nota</h2>
+                <h2>Editar caderno</h2>
 
                 <hr>
 
-                {!! Form::open(['route' => ['notebooks.notes.store', $notebook]]) !!}
+                {!! Form::model($notebook, ['method' => 'PUT', 'route' => ['notebooks.update', $notebook]]) !!}
 
                     <div class="form-group">
                         {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Título']) !!}
