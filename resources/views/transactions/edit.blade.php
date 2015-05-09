@@ -31,13 +31,13 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('amount', 'Valor: ') !!}
+                    {!! Form::label('amount', 'Valor ') !!}
                     {!! Form::text('amount', null, ['id' => 'amount']) !!}
                 </div>
 
                 <div class="form-inline">
                     <div class="form-group">
-                        <a href="{{ route('transactions.show', $transaction) }}">
+                        <a href="{{ route('transactions.index', $transaction) }}">
                             {!! Form::button('Cancelar', ['class' => 'btn btn-default']) !!}
                         </a>
                     </div>

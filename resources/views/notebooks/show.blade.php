@@ -29,7 +29,24 @@
                         </div>
                         
                         <hr/>
-                        <p>{{ $notebook->description }}</p>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+
+                                <p>{{ $notebook->description }}</p>
+
+                            </div>
+
+                            <div style="float: right;">
+                                Criado em: {!! date('d/m/Y', strtotime($notebook->created_at)) !!}
+                                <br/>
+                                Última alteração: {!! date('d/m/Y', strtotime($notebook->updated_at)) !!}
+                            </div>
+
+                        </div>
+
+
 
                         {!! Form::open() !!}
 
@@ -43,7 +60,7 @@
                 <div class="row">
 
                 @if ( !$notebook->notes->count() )
-                    Seu caderno ainda não possui notas!
+                    <h3>Você ainda não possui notas para esse caderno!</h3>
                 @else
                     @foreach($notebook->notes as $note)
                         <div id="note" class="panel panel-default">
@@ -52,7 +69,7 @@
                                     <a href="{{ route('notebooks.notes.show', [$notebook, $note]) }}">{!! $note->title !!}</a>
                                 </h3>
                             </div>
-                            <div id="note-description" class="panel-body">
+                            <div class="panel-body note-description">
                                 {!! $note->description !!}
                             </div>
                         </div>

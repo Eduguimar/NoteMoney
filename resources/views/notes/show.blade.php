@@ -37,13 +37,27 @@
 
                         <hr/>
 
-                        <p>{!! nl2br($note->description) !!}</p>
+                        <div class="row">
 
-                        {!! Form::open() !!}
+                            <div class="col-md-8">
+
+                            <p>{!! nl2br($note->description) !!}</p>
+
+                            </div>
+
+                            <div style="float: right;">
+                                Criada em: {!! date('d/m/Y', strtotime($note->created_at)) !!}
+                                <br/>
+                                Última alteração: {!! date('d/m/Y', strtotime($note->updated_at)) !!}
+                                <br/>
+                                <a href="/notes" style="float: right; margin: 30px 0px;">{!! Form::button('Ver todas as notas', ['class' => 'btn btn-info btn-lg']) !!}</a>
+                            </div>
+
+                        </div>
 
                         <a href="{{ route('notebooks.show', $notebook) }}">{!! Form::button('Voltar', ['class' => 'btn btn-default btn-lg']) !!}</a>
 
-                        {!! Form::close() !!}
+
 
                     </div>
                 </div>

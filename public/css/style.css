@@ -14,11 +14,20 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
 }
+#note_display {
+    display: inline-block;
+    white-space: nowrap;
+    float: left;
+    width: 648px;
+    margin: 10px 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 #note {
     display: inline-block;
     white-space: nowrap;
     float: left;
-    width: 610px;
+    width: 693px;
     margin: 10px 10px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -107,8 +116,9 @@ body {
 }
 /*** TÉRMINO DA TELA DE LOGIN - PANEL COM DOIS TABS ***/
 
-#note-description {
-    max-width: 358px;
+.note-description {
+    white-space: nowrap;
+    max-width: 640px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -161,3 +171,9 @@ body {
     font-size: 19px;
 }
 /*** TÉRMINO AJUSTE JUMBOTRON ***/
+
+/*** AJUSTE DATEPICKER ***/
+.datepicker {
+    margin: 10px;
+}
+/*** TÉRMINO AJUSTE DATEPICKER ***/

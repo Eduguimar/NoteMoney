@@ -23,7 +23,6 @@
                             <th>Lançamento</th>
                             <th>Valor</th>
                             <th>Editar</th>
-                            <th>Excluir</th>
                         </tr>
                         @foreach( $transactions as $transaction )
                             @if($transaction['type'] == 'income')
@@ -31,34 +30,35 @@
                                     <td><a href="{{ route('transactions.show', $transaction) }}" class="receita">{!! date('d-m-Y', strtotime($transaction->created_at)) !!}</a></td>
                                     <td><a href="{{ route('transactions.show', $transaction) }}" class="receita">{!! $transaction->title !!}</a></td>
                                     <td class="receita">{!! $transaction->amount !!}</td>
-
-                                    {!! Form::open(['route' => ['transactions.destroy', $transaction], 'method' => 'DELETE']) !!}
-
-                                        <td style="text-align: center;"><a href="{{ route('transactions.edit', $transaction) }}" style="color: #444;">{!! Form::button('<i class="fa fa-pencil-square-o"></i>') !!}</a></td>
-
-                                        <td style="text-align: center;">{!! Form::button('<i class="fa fa-trash-o"></i>', array('type' => 'submit', 'class' => 'confirm-delete', 'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => 'Excluir Lançamento', 'data-message' => 'Deseja realmente excluir este lançamento?'))  !!}</td>
-
-                                    {!! Form::close() !!}
-
+                                    <td style="text-align: center;"><a href="{{ route('transactions.edit', $transaction) }}" style="color: #444;">{!! Form::button('<i class="fa fa-pencil-square-o"></i>') !!}</a></td>
                                 </tr>
                             @else
                                 <tr class="danger despesa">
                                     <td><a href="{{ route('transactions.show', $transaction) }}" class="despesa">{!! date('d-m-Y', strtotime($transaction->created_at)) !!}</a></td>
                                     <td><a href="{{ route('transactions.show', $transaction) }}" class="despesa">{!! $transaction->title !!}</a></td>
                                     <td class="despesa">{!! $transaction->amount !!}</td>
-
-                                    {!! Form::open(['route' => ['transactions.destroy', $transaction], 'method' => 'DELETE']) !!}
-
-                                        <td style="text-align: center;"><a href="{{ route('transactions.edit', $transaction) }}" style="color: #444;">{!! Form::button('<i class="fa fa-pencil-square-o"></i>') !!}</a></td>
-
-                                        <td style="text-align: center;">{!! Form::button('<i class="fa fa-trash-o"></i>', array('type' => 'submit', 'class' => 'confirm-delete', 'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => 'Excluir Lançamento', 'data-message' => 'Deseja realmente excluir este lançamento?'))  !!}</td>
-
-                                    {!! Form::close() !!}
-
+                                    <td style="text-align: center;"><a href="{{ route('transactions.edit', $transaction) }}" style="color: #444;">{!! Form::button('<i class="fa fa-pencil-square-o"></i>') !!}</a></td>
                                 </tr>
                             @endif
                         @endforeach
                     </table>
+
+                    <div style="float: right;">
+                        {!! Form::open(['url' => 'transactions', 'method' => 'GET']) !!}
+
+                            {!! Form::label('data_inicio', 'De: ') !!}
+                            {!! Form::input('text', 'data_inicio', null, ['class' => 'datepicker']) !!}
+
+                            {!! Form::label('data_fim', 'Até: ') !!}
+                            {!! Form::input('text', 'data_fim', null, ['class' => 'datepicker']) !!}
+
+                            {!! Form::submit('Pesquisar', ['class' => 'btn btn-info']) !!}
+
+                        {!! Form::close() !!}
+
+                        <a href="/transactions" class="btn btn-info" style="float: right;">Todos Lançamentos</a>
+                    </div>
+
                 @endif
 
                 <h3>

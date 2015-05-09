@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="main container-fluid">
+    <div class="main container-fluid"  ng-controller="appController">
 
         <div class="row">
 
@@ -33,7 +33,23 @@
                             </div>
 
                             <hr/>
-                            <p>{{ $last_notebook->description }}</p>
+
+                            <div class="row">
+
+                                <div class="col-md-8">
+
+                                    <p>{{ $last_notebook->description }}</p>
+
+                                </div>
+
+                                <div style="float: right;">
+                                    Criado em: {!! date('d/m/Y', strtotime($last_notebook->created_at)) !!}
+                                    <br/>
+                                    Última alteração: {!! date('d/m/Y', strtotime($last_notebook->updated_at)) !!}
+                                </div>
+
+                            </div>
+
 
                             {!! Form::open() !!}
 
@@ -70,7 +86,7 @@
                                             <a href="{{ route('notebooks.notes.show', [$last_notebook, $note]) }}">{!! $note->title !!}</a>
                                         </h3>
                                     </div>
-                                    <div class="panel-body">
+                                    <div class="panel-body note-description">
                                         {!! $note->description !!}
                                     </div>
                                 </div>

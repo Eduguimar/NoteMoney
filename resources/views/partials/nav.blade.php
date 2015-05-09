@@ -12,10 +12,10 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
                 @if(Auth::user())
-                    <li><a href="#" data-toggle="modal" data-target="#createNotebook">Novo caderno</a></li>
-                    <li><a href="/transactions"></i> Lançamentos</a></li>
+                    <li><a href="/notebooks"> Cadernos</a></li>
+                    <li><a href="/notes"> Notas</a></li>
+                    <li><a href="/transactions"> Lançamentos</a></li>
                 @endif
             </ul>
 

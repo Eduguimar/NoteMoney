@@ -1,5 +1,5 @@
 <!-- Modal Dialog -->
-<div class="modal fade" id="confirmDelete" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+<div class="modal fade" id="deleteConfirm" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,7 +11,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger confirm">Excluir</button>
+                <button type="button" class="btn btn-danger delete">Excluir</button>
             </div>
         </div>
     </div>

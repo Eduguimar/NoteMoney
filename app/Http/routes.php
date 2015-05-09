@@ -16,7 +16,9 @@
 Route::get('/', 'NotebooksController@index');
 Route::resource('notebooks', 'NotebooksController');
 Route::resource('notebooks.notes', 'NotesController');
+Route::get('notes', 'NotesController@display');
 Route::resource('transactions', 'TransactionsController');
+Route::post('filter-transactions', 'TransactionsController@filter');
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
