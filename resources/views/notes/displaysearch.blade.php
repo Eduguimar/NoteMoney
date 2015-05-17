@@ -22,9 +22,17 @@
 
                         {!! Form::close() !!}
 
+                        <br/>
+                        <br/>
+                        <br/>
+
+                        <a href="/notes">{!! Form::button('Todas as Notas', ['class' => 'btn btn-default', 'style' => 'float: right;']) !!}</a>
+
+
                         <h1>Suas notas</h1>
 
                         <hr/>
+
 
                         <div class="row">
 

@@ -59,6 +59,10 @@ body {
     margin: 10px auto;
 }
 
+.cores-nota {
+    margin: 0 170px;
+}
+
 /*** TELA INICIAL DE LOGIN - PANEL COM DOIS TABS ***/
 #panel-inicial {
     opacity: 0.9;

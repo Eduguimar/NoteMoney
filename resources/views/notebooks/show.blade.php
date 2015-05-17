@@ -63,16 +63,62 @@
                     <h3>Você ainda não possui notas para esse caderno!</h3>
                 @else
                     @foreach($notebook->notes as $note)
-                        <div id="note" class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    <a href="{{ route('notebooks.notes.show', [$notebook, $note]) }}">{!! $note->title !!}</a>
-                                </h3>
+                        @if($note['color'] == 'gray')
+                            <div id="note" class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a href="{{ route('notebooks.notes.show', [$notebook, $note]) }}">{!! $note->title !!}</a>
+                                    </h3>
+                                </div>
+                                <div class="panel-body note-description">
+                                    {!! $note->description !!}
+                                </div>
                             </div>
-                            <div class="panel-body note-description">
-                                {!! $note->description !!}
+                        @elseif($note['color'] == 'red')
+                            <div id="note" class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a href="{{ route('notebooks.notes.show', [$notebook, $note]) }}">{!! $note->title !!}</a>
+                                    </h3>
+                                </div>
+                                <div class="panel-body note-description">
+                                    {!! $note->description !!}
+                                </div>
                             </div>
-                        </div>
+                        @elseif($note['color'] == 'yellow')
+                            <div id="note" class="panel panel-warning">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a href="{{ route('notebooks.notes.show', [$notebook, $note]) }}">{!! $note->title !!}</a>
+                                    </h3>
+                                </div>
+                                <div class="panel-body note-description">
+                                    {!! $note->description !!}
+                                </div>
+                            </div>
+                        @elseif($note['color'] == 'blue')
+                            <div id="note" class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a href="{{ route('notebooks.notes.show', [$notebook, $note]) }}">{!! $note->title !!}</a>
+                                    </h3>
+                                </div>
+                                <div class="panel-body note-description">
+                                    {!! $note->description !!}
+                                </div>
+                            </div>
+                        @elseif($note['color'] == 'green')
+                            <div id="note" class="panel panel-success">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a href="{{ route('notebooks.notes.show', [$notebook, $note]) }}">{!! $note->title !!}</a>
+                                    </h3>
+                                </div>
+                                <div class="panel-body note-description">
+                                    {!! $note->description !!}
+                                </div>
+                            </div>
+                        @endif
                     @endforeach
                 @endif
 

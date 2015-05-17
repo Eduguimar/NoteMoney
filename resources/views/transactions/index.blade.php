@@ -11,9 +11,13 @@
                 @if ( !$transactions->count() )
                     <div class="jumbotron">
                         <h2>Você ainda não possui lançamentos!</h2>
+
+                        <a href="{{ route('transactions.create') }}">{!! Form::button('Criar Primeiro Lançamento', ['class' => 'btn btn-primary btn-lg']) !!}</a>
                     </div>
                 @else
-                    <h1 class="page-heading">Lançamentos</h1>
+                    <h1 class="page-heading">Lançamentos Financeiros</h1>
+
+                    <a href="{{ route('transactions.create') }}" style="float: right;">{!! Form::button('Criar Novo Lançamento', ['class' => 'btn btn-primary btn-lg']) !!}</a>
 
                     <h2>Total = R$ {!! $totalAmount !!}</h2>
 
@@ -55,8 +59,6 @@
                             {!! Form::submit('Pesquisar', ['class' => 'btn btn-info']) !!}
 
                         {!! Form::close() !!}
-
-                        <a href="/transactions" class="btn btn-info" style="float: right;">Todos Lançamentos</a>
                     </div>
 
                 @endif

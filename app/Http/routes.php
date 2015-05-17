@@ -14,8 +14,10 @@
 /*Autenticação*/
 
 Route::get('/', 'NotebooksController@index');
+Route::get('notebooks/search', 'NotebooksController@search');
 Route::resource('notebooks', 'NotebooksController');
 Route::resource('notebooks.notes', 'NotesController');
+Route::get('notes/search', 'NotesController@search');
 Route::get('notes', 'NotesController@display');
 Route::resource('transactions', 'TransactionsController');
 Route::post('filter-transactions', 'TransactionsController@filter');

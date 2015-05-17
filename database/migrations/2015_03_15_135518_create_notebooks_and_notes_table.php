@@ -29,6 +29,7 @@ class CreateNotebooksAndNotesTable extends Migration {
             $table->increments('id');
             $table->integer('notebook_id')->unsigned()->default(0);
             $table->string('title');
+            $table->enum('color', ['gray', 'blue', 'green', 'yellow', 'red']);
             $table->text('description');
             $table->timestamps();
             $table->softDeletes();

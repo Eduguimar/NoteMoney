@@ -13,6 +13,8 @@ use Request;
 
 class NotebooksController extends Controller {
 
+    private $j = 0;
+
     //Construtor para aplicar o método de autenticação no controller
     public function __construct()
     {
@@ -124,5 +126,45 @@ class NotebooksController extends Controller {
 
         return Redirect::route('notebooks.index')->with('message', 'Caderno Excluído!');
 	}
+
+    public function search()
+    {
+        $all_notebooks = Auth::user()->notebooks;
+
+        $q = Input::get('search');
+
+        $notebooks = null;
+
+        foreach($all_notebooks as $notebook) {
+            $notebook_id = $notebook['id'];
+
+            $notebooks[$this->j] = Notebook::where(function($query) use($q){
+                $query->where('title', 'LIKE', '%' . $q . '%')->orWhere('description', 'LIKE', '%' . $q . '%');
+            })->where('id', '=', $notebook_id)->get();
+
+            $this->j++;
+
+        }
+
+        $last_notebooker = null;
+
+        $value = true;
+
+        foreach($notebooks as $notebooker) {
+            if(($notebooker != null) && (!$notebooker->isEmpty())) {
+                $last_notebooker = $notebooker;
+            }
+        }
+
+        if($last_notebooker != null) {
+
+            $last_notebook = $last_notebooker->first();
+
+        } else {
+            $last_notebook = null;
+        }
+
+        return view('notebooks.home', compact('notebooks', 'value', 'last_notebook'));
+    }
 
 }
