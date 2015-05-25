@@ -143,7 +143,6 @@ class NotebooksController extends Controller {
             })->where('id', '=', $notebook_id)->get();
 
             $this->j++;
-
         }
 
         $last_notebooker = null;

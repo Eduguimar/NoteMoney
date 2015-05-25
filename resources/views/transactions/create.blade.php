@@ -19,25 +19,27 @@
 
                 <div class="form-group">
                     {!! Form::label('description', 'Descrição: ') !!}
-                    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+                    {!! Form::textarea('description', null, ['class' => 'form-control counter', 'style' => 'max-height: 130px; ']) !!}
                 </div>
 
-                <div class="form-group">
-                    {!! Form::label('type', 'Receita') !!}
-                    {!! Form::radio('type', 'income', true, ['class' => 'radio']) !!}
-                    <br>
-                    {!! Form::label('type', 'Despesa') !!}
-                    {!! Form::radio('type', 'expense', null, ['class' => 'radio']) !!}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Tipo do lançamento</h3>
+                    </div>
+                    <div class="panel-body">
+                        <label class="radio-inline cores-nota"><input type="radio" name="type" value="income" checked>Receita</label>
+                        <label class="radio-inline cores-nota"><input type="radio" name="type" value="expense">Despesa</label>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    {!! Form::label('amount', 'Valor: ') !!}
-                    {!! Form::text('amount', null, ['id' => 'amount']) !!}
+                <div class="form-group well" style="width: 25%">
+                    {!! Form::label('amount', 'Valor: ', ['style' => 'font-size: large;']) !!}
+                    {!! Form::text('amount', null, ['id' => 'amount', 'style' => 'width: 95%;']) !!}
                 </div>
 
                 <div class="form-inline">
                     <div class="form-group">
-                        <a href="{{ URL::previous() }}">
+                        <a href="/transactions">
                             {!! Form::button('Cancelar', ['class' => 'btn btn-default']) !!}
                         </a>
                     </div>

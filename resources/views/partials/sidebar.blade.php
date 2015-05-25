@@ -11,7 +11,7 @@
 
     {!! Form::open(['action' => 'NotebooksController@search', 'method' => 'GET']) !!}
 
-        {!! Form::text('search', null, ['class' => 'form-control', 'placeholder' => 'Procurar cadernos', 'style' => 'width: 229px; float: left;']) !!}
+        {!! Form::text('search', null, ['class' => 'form-control', 'placeholder' => 'Procurar cadernos', 'style' => 'width: 82%; float: left;']) !!}
 
         <button type="submit" style="float: left; width: 33px; height: 33px;"><i class="fa fa-search"></i></button>
 

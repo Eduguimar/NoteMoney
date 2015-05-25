@@ -22,7 +22,8 @@ class CreateNoteRequest extends Request {
 	public function rules()
 	{
 		return [
-			'title' => 'required'
+            'title' => 'required|max:180',
+            'description' => 'max:180'
 		];
 	}
 

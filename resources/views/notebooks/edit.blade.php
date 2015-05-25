@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Descrição']) !!}
+                        {!! Form::textarea('description', null, ['class' => 'form-control counter', 'placeholder' => 'Descrição']) !!}
                     </div>
                     <div class="form-inline">
                         <div class="form-group">

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Pagination\Paginator;
+use App\Http\Requests\CreateTransactionRequest;
 
 use Auth;
 use Redirect;
@@ -28,9 +29,11 @@ class TransactionsController extends Controller {
     {
         $data_inicio = Input::get('data_inicio');
         $data_fim = Input::get('data_fim');
+        $dater = false;
 
         if((isset($data_inicio) && $data_inicio != null) && (isset($data_fim) && $data_fim != null)) {
             $transactions = Transaction::whereBetween('created_at', array(new Carbon($data_inicio), new Carbon($data_fim)))->where('user_id', '=', Auth::user()->id)->get();
+            $dater = true;
         } else {
             $transactions = Auth::user()->transactions;
         }
@@ -48,11 +51,9 @@ class TransactionsController extends Controller {
             $transaction['amount'] = 'R$ ' . $value;
         }
 
-        //dd($data_inicio);
-
         $this->totalAmount = number_format($this->total, 2, ',', '.');
 
-        return view('transactions.index', ['transactions' => $transactions, 'totalAmount' => $this->totalAmount]);
+        return view('transactions.index', ['transactions' => $transactions, 'totalAmount' => $this->totalAmount, 'dater' => $dater]);
     }
 
 	/**
@@ -68,10 +69,10 @@ class TransactionsController extends Controller {
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param CreateTransactionRequest $request
      * @return Response
      */
-	public function store(Request $request)
+	public function store(CreateTransactionRequest $request)
 	{
 		$transaction = new Transaction($request->all());
         $amount = $this->fromMoney($transaction['amount']);
@@ -141,5 +142,4 @@ class TransactionsController extends Controller {
         $value2 = str_replace(",", ".", $value1);
         return $value2;
     }
-
 }

@@ -1,3 +1,15 @@
+@font-face { font-family: Diavlo; src: url('../fonts/Diavlo_BOLD_II_37.otf'); }
+
+#logo{
+    font-family: Diavlo, sans-serif;
+    text-align: center;
+    font-size: 9em;
+    padding-top: 100px;
+    background: -webkit-linear-gradient(left, #fff, #000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 html {
     height: 100%;
 }
@@ -18,7 +30,7 @@ body {
     display: inline-block;
     white-space: nowrap;
     float: left;
-    width: 648px;
+    width: 47%;
     margin: 10px 10px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -27,7 +39,7 @@ body {
     display: inline-block;
     white-space: nowrap;
     float: left;
-    width: 693px;
+    width: 48%;
     margin: 10px 10px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -36,6 +48,11 @@ body {
 #note:focus {
     border: 1px solid #c9c9c9;
     transition: 0.5s;
+}
+.page-heading{
+    font-size: 44px;
+    margin-top: 40px;
+    margin-bottom: 80px;
 }
 .panel-title {
     white-space: nowrap;
@@ -60,7 +77,7 @@ body {
 }
 
 .cores-nota {
-    margin: 0 170px;
+    margin: 0 10%;
 }
 
 /*** TELA INICIAL DE LOGIN - PANEL COM DOIS TABS ***/
@@ -122,7 +139,7 @@ body {
 
 .note-description {
     white-space: nowrap;
-    max-width: 640px;
+    max-width: 97%;
     overflow: hidden;
     text-overflow: ellipsis;
 }

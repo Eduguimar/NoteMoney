@@ -3,6 +3,7 @@
 @section('content')
 
     <div class=" main container-fluid">
+        <h1 id="logo">NoteMoney</h1>
         <div class="row" style="padding-top: 100px;">
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel with-nav-tabs panel-default" id="panel-inicial">
@@ -13,16 +14,6 @@
                         </ul>
                     </div>
                     <div class="panel-body">
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <strong>Opa!</strong> Houve algum problema!<br><br>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="tab1default">
                                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
@@ -39,16 +30,6 @@
                                         <label class="col-md-4 control-label">Senha:</label>
                                         <div class="col-md-6">
                                             <input type="password" class="form-control" name="password">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-6 col-md-offset-4">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="remember"> Lembrar senha
-                                                </label>
-                                            </div>
                                         </div>
                                     </div>
 

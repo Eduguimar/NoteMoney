@@ -104,7 +104,9 @@ return array(
     'attributes' => array(
         'title' => 'Título',
         'description' => 'Descrição',
-        'password' => 'senha'
+        'password' => 'senha',
+        'type' => 'Tipo de Lançamento',
+        'amount' => 'Valor'
     ),
 
 );

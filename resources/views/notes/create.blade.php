@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Descrição']) !!}
+                        {!! Form::textarea('description', null, ['class' => 'form-control counter', 'placeholder' => 'Descrição']) !!}
                     </div>
 
                     <div class="row cores-notas">
@@ -38,27 +38,6 @@
                                 <label class="radio-inline cores-nota"><input type="radio" name="color" value="green">Verde</label>
                             </div>
                         </div>
-
-                        <!--<div class="col-md-3">
-                            {!! Form::label('color', 'Cinza', ['class' => 'radio-inline']) !!}
-                            {!! Form::radio('color', 'gray', true, ['class' => 'radio']) !!}
-                        </div>
-                        <div class="col-md-3">
-                            {!! Form::label('color', 'Vermelho') !!}
-                            {!! Form::radio('color', 'red', null, ['class' => 'radio']) !!}
-                        </div>
-                        <div class="col-md-3">
-                            {!! Form::label('color', 'Verde') !!}
-                            {!! Form::radio('color', 'green', null, ['class' => 'radio']) !!}
-                        </div>
-                        <div class="col-md-2">
-                            {!! Form::label('color', 'Azul') !!}
-                            {!! Form::radio('color', 'blue', null, ['class' => 'radio']) !!}
-                        </div>
-                        <div class="col-md-1">
-                            {!! Form::label('color', 'Amarelo') !!}
-                            {!! Form::radio('color', 'yellow', null, ['class' => 'radio']) !!}
-                        </div>-->
 
                     </div>
 

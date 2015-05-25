@@ -8,18 +8,30 @@
 
             <div class="col-sm-10 col-sm-offset-1">
 
-                @if ( !$transactions->count() )
+                @if ( !$transactions->count() && $dater == false)
                     <div class="jumbotron">
                         <h2>Você ainda não possui lançamentos!</h2>
 
+                        <br/>
+                        <br/>
+
                         <a href="{{ route('transactions.create') }}">{!! Form::button('Criar Primeiro Lançamento', ['class' => 'btn btn-primary btn-lg']) !!}</a>
+
                     </div>
                 @else
                     <h1 class="page-heading">Lançamentos Financeiros</h1>
 
                     <a href="{{ route('transactions.create') }}" style="float: right;">{!! Form::button('Criar Novo Lançamento', ['class' => 'btn btn-primary btn-lg']) !!}</a>
 
-                    <h2>Total = R$ {!! $totalAmount !!}</h2>
+                    @if($totalAmount >= 0)
+
+                        <h2 class="well" style="width: 50%">Saldo Total: <span style="color: #138921;">R$ {!! $totalAmount !!}</span></h2>
+
+                    @else
+
+                        <h2 class="well" style="width: 50%">Saldo Total: <span style="color: #C30707;">R$ {!! $totalAmount !!}</span></h2>
+
+                    @endif
 
                     <table id="transaction-table" class="table">
                         <tr>
@@ -46,26 +58,34 @@
                             @endif
                         @endforeach
                     </table>
+                    
 
                     <div style="float: right;">
-                        {!! Form::open(['url' => 'transactions', 'method' => 'GET']) !!}
+                        @if($dater == false)
+                            {!! Form::open(['url' => 'transactions', 'method' => 'GET']) !!}
 
-                            {!! Form::label('data_inicio', 'De: ') !!}
-                            {!! Form::input('text', 'data_inicio', null, ['class' => 'datepicker']) !!}
+                                {!! Form::label('data_inicio', 'De: ') !!}
+                                {!! Form::input('text', 'data_inicio', null, ['class' => 'datepicker']) !!}
 
-                            {!! Form::label('data_fim', 'Até: ') !!}
-                            {!! Form::input('text', 'data_fim', null, ['class' => 'datepicker']) !!}
+                                {!! Form::label('data_fim', 'Até: ') !!}
+                                {!! Form::input('text', 'data_fim', null, ['class' => 'datepicker']) !!}
 
-                            {!! Form::submit('Pesquisar', ['class' => 'btn btn-info']) !!}
+                                {!! Form::submit('Pesquisar', ['class' => 'btn btn-info']) !!}
 
-                        {!! Form::close() !!}
+                            {!! Form::close() !!}
+                        @else
+                            <a href="/transactions">{!! Form::button('Voltar', ['class' => 'btn btn-info']) !!}</a>
+                        @endif
                     </div>
 
-                @endif
 
-                <h3>
-                    {!! link_to_route('transactions.create', 'Criar Novo Lançamento') !!}
-                </h3>
+                    <h4>
+                        <a href="{{ route('transactions.create') }}">
+                            <i class="fa fa-plus fa-fw" style="color: #337AB7; "></i>Novo Lançamento
+                        </a>
+                    </h4>
+
+                @endif
 
             </div>
         </div>

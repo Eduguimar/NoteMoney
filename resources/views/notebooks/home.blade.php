@@ -208,7 +208,7 @@
 
                             {!! Form::open() !!}
 
-                            <a href="#">{!! Form::button('Criar primeiro caderno!', ['class' => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', 'data-target' => '#createNotebook']) !!}</a>
+                            <a href="#">{!! Form::button('Criar primeiro caderno', ['class' => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', 'data-target' => '#createNotebook']) !!}</a>
 
                             {!! Form::close() !!}
                         @else
@@ -287,5 +287,7 @@
         </div>
 
     </div>
+
+    @include('/modals/confirm_delete')
 
 @stop

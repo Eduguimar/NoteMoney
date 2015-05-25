@@ -21,8 +21,27 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Descrição']) !!}
+                    {!! Form::textarea('description', null, ['class' => 'form-control counter', 'placeholder' => 'Descrição']) !!}
                 </div>
+
+                <div class="row cores-notas">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Cor da Nota</h3>
+                        </div>
+                        <div class="panel-body">
+                            <label class="radio-inline cores-nota"><input type="radio" name="color" value="gray" checked>Cinza</label>
+                            <label class="radio-inline cores-nota"><input type="radio" name="color" value="red">Vermelho</label>
+                            <label class="radio-inline cores-nota"><input type="radio" name="color" value="yellow">Amarelo</label>
+                            <label class="radio-inline cores-nota"><input type="radio" name="color" value="blue">Azul</label>
+                            <label class="radio-inline cores-nota"><input type="radio" name="color" value="green">Verde</label>
+                        </div>
+                    </div>
+
+                </div>
+
+
                 <div class="form-inline">
                     <div class="form-group">
                         <a href="{{ route('notebooks.notes.show', [$notebook, $note]) }}">

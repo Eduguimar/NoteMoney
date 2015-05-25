@@ -153,8 +153,6 @@ class NotesController extends Controller {
             $this->j++;
         }
 
-        //dd($notes);
-
         return view('notes.displaysearch', compact('notebooks', 'notes'));
     }
 
